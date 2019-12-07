@@ -10,10 +10,13 @@ const port = process.env.PORT || 3000;
 
 const talkRoutes = require('./routes/talk');
 
+//Creates the express app
 const app = express();
 
-
+// parse requests of content-type - application/x-www-form-urlencoded
 app.use(body_parser.urlencoded({extended: true}));
+
+// parse requests of content-type - application/json
 app.use(body_parser.json());
 
 //General middleware to avoid errors like CORS
@@ -38,9 +41,10 @@ app.use((error, req, res, next) => {
     res.status(status).json({ message: message });
   });
 
-app.use('/feed', talkRoutes);
+app.use('/talk', talkRoutes);
 
 
+//Connects to the database and also listens for requests
 mongoose
   .connect(
     'mongodb+srv://mylaw_db:kenechukwu@mylaw-nno7l.mongodb.net/test?retryWrites=true&w=majority',{
@@ -48,8 +52,12 @@ mongoose
         useUnifiedTopology: true
     }
   )
-  .then(result => {
+  .then(() => {
+      console.log("Database connected")
+  })
+  .then(() => {
     app.listen(port, () => {
         console.log(`Listening to requests on http://localhost:${port}`)
     })
   });
+  

@@ -1,18 +1,18 @@
 const express = require('express');
 
-const feedController = require('../controllers/talk');
+const talkController = require('../controllers/talk');
 
 const router = express.Router();
 
 
-//POST /feed/add_talk
-router.post('/add_talk', feedController.add_talk);
+//POST /talk/add_talk   creates a new talk
+router.post('/add_talk', talkController.add_talk);
 
-//POST /feed/add_attendee
-router.post('/add_attendee', feedController.add_attendee)
+//POST /talk/add_attendee  creates a new attendee
+router.post('/add_attendee', talkController.add_attendee)
 
-//DELETE /feed/remove_talk
-router.delete('/remove_talk', feedController.remove_talk);
+//DELETE /talk/delete_Talk   deletes talk with a specified Id in the request
+router.delete('/delete_talk/:talKId', talkController.delete_talk);
 
 
 
