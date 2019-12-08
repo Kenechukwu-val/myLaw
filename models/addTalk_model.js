@@ -12,4 +12,6 @@ const addTalkSchema = new Schema(
     { timestamps: true }
 )
 
+
+
 module.exports = mongoose.model('addTalk', addTalkSchema);

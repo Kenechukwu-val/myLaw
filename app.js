@@ -19,6 +19,21 @@ app.use(body_parser.urlencoded({extended: true}));
 // parse requests of content-type - application/json
 app.use(body_parser.json());
 
+//Connects to the database and also listens for requests
+mongoose
+  .connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/mylaw',{
+
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+      console.log('Connected!!')
+    })
+    .catch(err => {
+      console.log('Not connected', err);
+    })
+
 //General middleware to avoid errors like CORS
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Orign", "*");
@@ -43,21 +58,7 @@ app.use((error, req, res, next) => {
 
 app.use('/talk', talkRoutes);
 
-
-//Connects to the database and also listens for requests
-mongoose
-  .connect(
-    'mongodb+srv://mylaw_db:kenechukwu@mylaw-nno7l.mongodb.net/test?retryWrites=true&w=majority',{
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }
-  )
-  .then(() => {
-      console.log("Database connected")
-  })
-  .then(() => {
-    app.listen(port, () => {
-        console.log(`Listening to requests on http://localhost:${port}`)
-    })
-  });
   
+app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`)
+});
