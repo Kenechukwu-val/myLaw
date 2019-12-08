@@ -14,6 +14,7 @@ router.post('/add_attendee', talkController.add_attendee)
 //DELETE /talk/delete_Talk   deletes talk with a specified Id in the request
 router.delete('/delete_talk/:talKId', talkController.delete_talk);
 
+//POST /talk/attendee_to_talk 
 router.post('/attendee_to_talk/', talkController.attendee_to_talk);
 
 

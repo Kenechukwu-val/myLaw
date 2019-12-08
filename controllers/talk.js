@@ -59,6 +59,13 @@ exports.delete_talk = ( req, res, next ) => {
 exports.add_attendee = ( req, res, next ) => {
     const attendee = req.body.attendee;
 
+     //Validates request
+     if ( !attendee ) {
+        return res.status(400).json({
+            message: "Attendee field cannot be empty"
+        });
+    }
+
     const Add_attendee = new addAttendee({
         attendee: attendee
     });
