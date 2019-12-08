@@ -56,7 +56,7 @@ app.use((error, req, res, next) => {
 
 app.use('/talk', talkRoutes);
 
-app.use((req, res, next ) => {
+app.use('/', (req, res, next ) => {
   res.send("MyLaw Conference Talk");
 })
 
