@@ -56,6 +56,10 @@ app.use((error, req, res, next) => {
 
 app.use('/talk', talkRoutes);
 
+app.use((req, res, next ) => {
+  res.send("MyLaw Conference Talk");
+})
+
   
 app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`)
