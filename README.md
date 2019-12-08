@@ -16,4 +16,12 @@ REST API is a Representational State Transfer =>
 
 Heroku URL => https://ancient-oasis-35443.herokuapp.com/
 
+Routes: you use when checking the API using Postman
+Add a talk: https://ancient-oasis-35443.herokuapp.com/talk/add_talk
+
+Add an attendee: https://ancient-oasis-35443.herokuapp.com/talk/add_attendee
+
+Add an attendee to talk: https://ancient-oasis-35443.herokuapp.com/talk/attendee_to_talk
+
+
 mLab Database URL => https://www.mlab.com/databases/heroku_7m3bj4fx
